@@ -6,40 +6,40 @@ Practice interview questions with Toptal
   Most things in JS are objects. If bar was created as an instance of new Array() it would still be an object. To determine if `bar` was an object we could use the Object.prototype.toString() method. If `bar` is a true object it would return `[objec Object]`.
 
 2. What will the code below output to console and why? 
-```
-(function(){
-  var a = b = 3;
-})();
-
-console.log("a defined? " + (typeof a !== 'undefined'));
-console.log("b defined? " + (typeof b !== 'undefined'));
-console.log(b)
-```
-
-This is a Immediately Invoked Function Expression (IIFE) because it is wrapped in ()
-a will be undefined because var reassigns b to a. b will have an output of 3
+    ```
+    (function(){
+      var a = b = 3;
+    })();
+    
+    console.log("a defined? " + (typeof a !== 'undefined'));
+    console.log("b defined? " + (typeof b !== 'undefined'));
+    console.log(b)
+    ```
+    
+    This is a Immediately Invoked Function Expression (IIFE) because it is wrapped in ()
+    a will be undefined because var reassigns b to a. b will have an output of 3
 
 3. What will the code below output to the console and why?
-```
-var myObject = {
-    foo: "bar",
-    func: function() {
-        var self = this;
-        console.log("outer func:  this.foo = " + this.foo);
-        console.log("outer func:  self.foo = " + self.foo);
-        (function() {
-            console.log("inner func:  this.foo = " + this.foo);
-            console.log("inner func:  self.foo = " + self.foo);
-        }());
-    }
-};
-myObject.func();
-```
-
-outer func: this.foo = 'bar'
-outer func: self.foo = 'bar'
-inner func: this.foo = undefined because this is no longer referencing myObject
-innter func: self.foo  = 'bar' 
+    ```
+    var myObject = {
+        foo: "bar",
+        func: function() {
+            var self = this;
+            console.log("outer func:  this.foo = " + this.foo);
+            console.log("outer func:  self.foo = " + self.foo);
+            (function() {
+                console.log("inner func:  this.foo = " + this.foo);
+                console.log("inner func:  self.foo = " + self.foo);
+            }());
+        }
+    };
+    myObject.func();
+    ```
+    
+    outer func: this.foo = 'bar'
+    outer func: self.foo = 'bar'
+    inner func: this.foo = undefined because this is no longer referencing myObject
+    innter func: self.foo  = 'bar' 
 
 
 4. What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?
