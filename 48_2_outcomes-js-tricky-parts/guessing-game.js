@@ -1,28 +1,24 @@
 function guessingGame() {
     //create random number everytime the function runs
-    let num = Math.floor(Math.random() * 99);
+    const answer = Math.floor(Math.random() * 100);
     let count = 0;
     let hasWon = false;
 
     //why does there need to be a return function?
-    return function guess(guess) {
-        if (hasWon) return 'The game is over, you already won!';
-
-        //output for too low, high, exact number 
-        if (guess < num) {
-            count++;
-            return `${guess} is too low!`
-        }
-        else if (guess > num) {
-            count++
-            return `${guess} is too low!`
-        }
-        else {
+    return function guess(num) {
+        if (hasWon) return "The game is over, you already won!";
+        //check for equality
+        count++;
+        if (answer === num) {
             hasWon = true;
-            return `You win! You found ${guess} in ${count} guesses.`
-        }        
-        }   
-    }
+            const guess = count === 1 ? "guess" : "guesses";
+            return `You win! You found ${answer} in ${count} ${guess}.`            
+        }
+        //output for too low, high, exact number 
+        if (num < answer) return `${num} is too low!`;
+        if (num > answer) return `${num} is too high!`;
+    }   
+}
 
 
 
